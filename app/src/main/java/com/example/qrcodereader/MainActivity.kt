@@ -2,9 +2,11 @@ package com.example.qrcodereader
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.budiyev.android.codescanner.AutoFocusMode
 import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.DecodeCallback
+import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
 
 import kotlinx.android.synthetic.main.activity_main.*
@@ -26,9 +28,26 @@ private lateinit var codeScanner: CodeScanner
 
         codeScanner.decodeCallback = DecodeCallback {
             runOnUiThread{
-                to
+                Toast.makeText(this, "Scan Result: ${it.text}", Toast.LENGTH_LONG).show()
             }
         }
+        codeScanner.errorCallback = ErrorCallback {
+            runOnUiThread{
+                Toast.makeText(this, "Camera Error: ${it.message}", Toast.LENGTH_LONG).show()
+            }
+
+        }
+        codeScanner.startPreview()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        codeScanner.startPreview()
+    }
+
+    override fun onPause() {
+        codeScanner.releaseResources()
+        super.onPause()
     }
 
 }
