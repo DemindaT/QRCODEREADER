@@ -2,11 +2,12 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 }
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+
 android {
+
     namespace 'com.example.qrcodereader'
     compileSdk 33
+
 
     defaultConfig {
         applicationId "com.example.qrcodereader"
@@ -24,6 +25,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

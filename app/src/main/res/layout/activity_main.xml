@@ -11,9 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="400dp"
         app:autoFocusButtonColor="@android:color/white"
-        app:autoFocusButtonVisible="true"
-        app:autoFlashButtonColor="@android:color/white"
-        app:autoFlashButtonVisible="true"
+
         app:maskColor="#59020202" />
 
     <TextView
